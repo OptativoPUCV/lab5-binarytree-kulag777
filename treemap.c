@@ -92,6 +92,8 @@ void removeNode(TreeMap *tree, TreeNode *node) {
       node->parent->right = NULL;
     }
     free(node->pair->key);
+    free(node->pair);
+    free(node);
   } else {
     if (node->left == NULL) {
       if (node->parent->left == node) {
@@ -101,6 +103,8 @@ void removeNode(TreeMap *tree, TreeNode *node) {
       }
       node->right->parent = node->parent;
       free(node->pair->key);
+      free(node->pair);
+      free(node);
     } else {
       if (node->parent->left == node) {
         node->parent->left = node->left;
@@ -109,10 +113,10 @@ void removeNode(TreeMap *tree, TreeNode *node) {
       }
       node->left->parent = node->parent;
       free(node->pair->key);
+      free(node->pair);
+      free(node);
     }
   }
-  free(node->pair);
-  free(node);
 }
 
 void eraseTreeMap(TreeMap *tree, void *key) {
