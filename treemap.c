@@ -146,20 +146,24 @@ Pair *searchTreeMap(TreeMap *tree, void *key) {
 }
 // funcoin que encontrar el primer dato con clave mayor o igual a key
 Pair *upperBound(TreeMap *tree, void *key) {
-  TreeNode *aux = tree->root;
-  while (aux != NULL) {
-    if (is_equal(tree, key, aux->pair->key) == 1) {
-      tree->current = aux;
-      return aux->pair;
-    } else {
-      if (tree->lower_than(key, aux->pair->key) == 1) {
-        aux = aux->left;
-      } else {
-        aux = aux->right;
-      }
+  TreeNode *nodo = tree->root;
+  TreeNode *upperB = NULL;
+  while (nodo != NULL) {
+    if (is_equal(tree, nodo->pair->key, key)) {
+      tree->current = nodo;
+      return nodo->pair;
+    } else if (tree->lower_than(nodo->pair->key, key))
+      nodo = nodo->right;
+    else {
+      upperB = nodo;
+      nodo = nodo->left;
     }
   }
-  return NULL;
+  if (upperB != NULL) {
+    tree->current = upperB;
+    return upperB->pair;
+  } else
+    return NULL;
 }
 
 Pair *firstTreeMap(TreeMap *tree) { return NULL; }
