@@ -85,14 +85,13 @@ TreeNode *minimum(TreeNode *x) {
 }
 
 void removeNode(TreeMap *tree, TreeNode *node) {
-  // nodo sin hijos
   if (node->left == NULL && node->right == NULL) {
     if (node->parent->left == node)
       node->parent->left = NULL;
     else if (node->parent->right == node)
       node->parent->right = NULL;
   }
-  // nodo con un hijo
+
   else if (node->left != NULL && node->right == NULL) {
     if (node->parent == NULL)
       tree->root = node->left;
@@ -110,7 +109,7 @@ void removeNode(TreeMap *tree, TreeNode *node) {
       node->parent->right = node->right;
     node->right->parent = node->parent;
   }
-  // nodo con dos hijos
+
   else if (node->right != NULL && node->left != NULL) {
     TreeNode *minimo = minimum(node->right);
     node->pair->key = minimo->pair->key;
@@ -145,7 +144,7 @@ Pair *searchTreeMap(TreeMap *tree, void *key) {
   }
   return NULL;
 }
-
+// funcoin que encontrar el primer dato con clave mayor o igual a key
 Pair *upperBound(TreeMap *tree, void *key) {
   TreeNode *aux = tree->root;
   while (aux != NULL) {
@@ -160,7 +159,6 @@ Pair *upperBound(TreeMap *tree, void *key) {
       }
     }
   }
-
   return NULL;
 }
 
