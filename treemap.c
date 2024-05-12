@@ -191,4 +191,5 @@ Pair *nextTreeMap(TreeMap *tree) {
     if (padre == NULL)
       return NULL;
   }
+  return aux->pair;
 }
