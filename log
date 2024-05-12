@@ -61,3 +61,9 @@ Sun 12 May 2024 10:24:07 PM UTC:
  1 file changed, 30 insertions(+), 7 deletions(-)
  tests:  0|0
 8a1a689
+Sun 12 May 2024 10:28:14 PM UTC: 
+ treemap.c | 83 +++++++++++++++++++++++++--------------------------------------
+ 1 file changed, 33 insertions(+), 50 deletions(-)
+ tests:  19|3
+total_score: 40/70
+587a801
